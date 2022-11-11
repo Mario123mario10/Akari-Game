@@ -2,9 +2,9 @@
 
 # Członkowie
 
-Veronika Mamai
-Dawid Nowicki
-Mateusz Okulus
-Mariusz Pakulski
+- Veronika Mamai
+- Dawid Nowicki
+- Mateusz Okulus
+- Mariusz Pakulski
 
 # [Wymagania](wymagania.md)
