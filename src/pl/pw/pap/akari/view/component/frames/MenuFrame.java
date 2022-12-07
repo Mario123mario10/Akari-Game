@@ -65,7 +65,7 @@ public class MenuFrame extends AbstractAkariFrame {
         MenuButtonAttributes menuButtonAttributes
                 = new MenuButtonAttributes(
                 new Bounds(200, 520, 200, 60),
-                RESOURCES.SETTINGS_BACKGROUND_PATH);
+                RESOURCES.SETTINGS_BUTTON_BACKGROUND_PATH);
 
         return new MenuButton(eventHandler, menuButtonAttributes,
                 new CommonEvent(EVENT_TYPE.SETTINGS_EVENT));

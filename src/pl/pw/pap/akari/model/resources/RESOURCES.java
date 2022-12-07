@@ -5,7 +5,8 @@ public enum RESOURCES {
     NEW_GAME_BUTTON_BACKGROUND_PATH("src/resources/new_game.jpg"),
     LOAD_GAME_BUTTON_BACKGROUND_PATH("src/resources/load_game.jpg"),
     RESUME_BUTTON_BACKGROUND_PATH("src/resources/resume.jpg"),
-    SETTINGS_BACKGROUND_PATH("src/resources/settings.jpg"),
+    SETTINGS_BUTTON_BACKGROUND_PATH("src/resources/settings.jpg"),
+    SETTINGS_BACKGROUND_PATH("src/resources/settings-background.jpg"),
     QUIT_BUTTON_BACKGROUND_PATH("src/resources/quit.jpg"),
     BULB_ICON_PATH("src/resources/bulb.jpg"),
     ERR_BULB_ICON_PATH("src/resources/bulb_err.jpg");
