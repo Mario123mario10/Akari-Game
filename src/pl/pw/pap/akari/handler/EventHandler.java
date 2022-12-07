@@ -47,7 +47,7 @@ public class EventHandler {
                 break;
             case SETTINGS_EVENT:
                 framesManager.setCurrentFrameInvisible();
-                // TODO set settingsFrame visible
+                framesManager.setSettingsFrameVisible();
                 break;
             case QUIT_EVENT:
                 System.exit(0);
@@ -83,5 +83,9 @@ public class EventHandler {
 
     public void setFramesManager(FramesManager framesManager) {
         this.framesManager = framesManager;
+    }
+
+    public SettingsService getSettingsService() {
+        return this.settingsService;
     }
 }

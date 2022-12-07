@@ -5,6 +5,7 @@ import pl.pw.pap.akari.model.component.attributes.BoardButtonAttributes;
 import pl.pw.pap.akari.model.game.settings.GameSettings;
 import pl.pw.pap.akari.view.component.frames.GameFrame;
 import pl.pw.pap.akari.view.component.frames.MenuFrame;
+import pl.pw.pap.akari.view.component.frames.SettingsFrame;
 
 import javax.swing.*;
 import java.util.List;
@@ -14,11 +15,13 @@ public class FramesManager {
 
     private MenuFrame menuFrame;
     private GameFrame currentGameFrame;
+    private SettingsFrame settingsFrame;
     private EventHandler eventHandler;
 
     public FramesManager(EventHandler eventHandler) {
         this.eventHandler = eventHandler;
         this.menuFrame = new MenuFrame(eventHandler);
+        this.settingsFrame = new SettingsFrame(eventHandler);
         this.currentFrame = menuFrame;
 
         menuFrame.setVisible(true);
@@ -54,5 +57,11 @@ public class FramesManager {
 
     public void timerStop() {
         currentGameFrame.timerStop();
+    }
+
+    public void setSettingsFrameVisible() {
+        settingsFrame.setBounds(currentFrame.getBounds());
+        currentFrame = settingsFrame;
+        currentFrame.setVisible(true);
     }
 }
