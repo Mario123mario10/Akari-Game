@@ -24,7 +24,7 @@ public class SettingsFrame extends AbstractAkariFrame {
         this.setContentPane(background);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.getContentPane().setLayout(new GridBagLayout());
-        this.font = new Font("sans", Font.PLAIN, 22);
+        this.font = new Font("sans", Font.BOLD, 22);
         this.addComponentListener(new BackOnHideComponentListener());
 
         var c = new GridBagConstraints();
@@ -74,7 +74,7 @@ public class SettingsFrame extends AbstractAkariFrame {
 
     @Override
     protected RESOURCES getBackgroundPath() {
-        return RESOURCES.SETTINGS_BACKGROUND_PATH;
+        return RESOURCES.MENU_FRAME_BACKGROUND_PATH;
     }
 
     private void updateWidth(int newWidth) {
