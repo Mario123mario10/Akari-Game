@@ -21,7 +21,6 @@ public class FramesManager {
     public FramesManager(EventHandler eventHandler) {
         this.eventHandler = eventHandler;
         this.menuFrame = new MenuFrame(eventHandler);
-        this.settingsFrame = new SettingsFrame(eventHandler);
         this.currentFrame = menuFrame;
 
         menuFrame.setVisible(true);
@@ -59,9 +58,17 @@ public class FramesManager {
         currentGameFrame.timerStop();
     }
 
+    public void generateSettingsFrame(GameSettings gameSettings) {
+        this.settingsFrame = new SettingsFrame(eventHandler, gameSettings);
+    }
+
     public void setSettingsFrameVisible() {
         settingsFrame.setBounds(currentFrame.getBounds());
         currentFrame = settingsFrame;
         currentFrame.setVisible(true);
+    }
+
+    public void refreshSettingsFrame(GameSettings gameSettings) {
+        settingsFrame.updateSettings(gameSettings);
     }
 }

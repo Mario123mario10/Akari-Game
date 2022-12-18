@@ -2,6 +2,7 @@ package pl.pw.pap.akari.handler;
 
 import pl.pw.pap.akari.model.component.event.BoardButtonEvent;
 import pl.pw.pap.akari.model.component.event.CommonEvent;
+import pl.pw.pap.akari.model.component.event.SettingsUpdateEvent;
 import pl.pw.pap.akari.model.game.settings.GameSettings;
 import pl.pw.pap.akari.service.BoardSaver;
 import pl.pw.pap.akari.service.GameService;
@@ -47,6 +48,7 @@ public class EventHandler {
                 break;
             case SETTINGS_EVENT:
                 framesManager.setCurrentFrameInvisible();
+                framesManager.generateSettingsFrame(settingsService.getGameSettings());
                 framesManager.setSettingsFrameVisible();
                 break;
             case QUIT_EVENT:
@@ -80,12 +82,16 @@ public class EventHandler {
         }
     }
 
+    public void handleEvent(SettingsUpdateEvent event) {
+        var gameSettings = settingsService.getGameSettings();
+        gameSettings.setX(event.getWidth());
+        gameSettings.setY(event.getHeight());
+        gameSettings.setDifficultyLevel(event.getDifficultyLevel());
+        settingsService.setGameSettings(gameSettings);
+        framesManager.refreshSettingsFrame(settingsService.getGameSettings());
+    }
 
     public void setFramesManager(FramesManager framesManager) {
         this.framesManager = framesManager;
-    }
-
-    public SettingsService getSettingsService() {
-        return this.settingsService;
     }
 }

@@ -3,6 +3,10 @@ package pl.pw.pap.akari.model.game.settings;
 
 public class GameSettings {
     private final int fieldSize = 64;
+    private final int minWidth = 5;
+    private final int maxWidth = 10;
+    private final int minHeight = 5;
+    private final int maxHeight = 10;
 
     private int x;
     private int y;
@@ -50,5 +54,21 @@ public class GameSettings {
 
     public void setDifficultyLevel(DIFFICULTY_LEVEL difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
+    }
+
+    public int getMinWidth() {
+        return minWidth;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
+    }
+
+    public int getMinHeight() {
+        return minHeight;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
     }
 }
