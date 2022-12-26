@@ -91,6 +91,8 @@ public class EventHandler {
         framesManager.refreshSettingsFrame(settingsService.getGameSettings());
     }
 
+
+
     public void setFramesManager(FramesManager framesManager) {
         this.framesManager = framesManager;
     }
