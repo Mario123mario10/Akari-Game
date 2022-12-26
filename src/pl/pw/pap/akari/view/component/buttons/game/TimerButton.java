@@ -6,12 +6,11 @@ import pl.pw.pap.akari.model.component.event.CommonEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class TimerButton extends JButton {
     private EventHandler eventHandler;
     private CommonEvent event;
+    // 0.1 sec
     private int time = 1;
     private Timer timer;
 
@@ -33,9 +32,15 @@ public class TimerButton extends JButton {
     }
 
     private void setText(int time) {
-        this.setText("<html><center> <small>" + time + " SEC</center></small><br>" + "CHECK" + "</html>");
+        this.setText("<html><center> <small>" +  prepareTime() + " SEC</center></small><br>" + "CHECK" + "</html>");
     }
 
+    private String prepareTime(){
+        int second = time/10;
+        int tenthSecond = time % 10;
+
+        return second + ":" + tenthSecond;
+    }
     private void setBackground() {
         this.setBackground(Color.getHSBColor(217, 30 + calcColorSeed(), 100));
     }
@@ -45,7 +50,7 @@ public class TimerButton extends JButton {
     }
 
     private Timer generateTimer() {
-        Timer timer = new Timer(1000, actionEvent -> {
+        Timer timer = new Timer(100, actionEvent -> {
             setText(time);
             setBackground();
             time++;
