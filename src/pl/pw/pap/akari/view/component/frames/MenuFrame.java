@@ -39,6 +39,10 @@ public class MenuFrame extends AbstractAkariFrame {
     public void setResumeButtonVisible() {
         this.resumeButton.setVisible(true);
     }
+    
+    public void setResumeButtonInvisible() {
+        this.resumeButton.setVisible(false);
+    }
 
     private MenuButton generateNewGameButton() {
         MenuButtonAttributes menuButtonAttributes

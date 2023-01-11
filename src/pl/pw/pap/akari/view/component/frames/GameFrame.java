@@ -50,6 +50,10 @@ public class GameFrame extends AbstractAkariFrame {
     public void timerStop() {
         this.timerButton.stop();
     }
+    
+    public int getTime() {
+		return timerButton.getTime();
+	}
 
     public void refreshGameButtons(List<BoardButtonAttributes> attributesList) {
         for (BoardButtonAttributes attributes : attributesList) {
@@ -144,7 +148,7 @@ public class GameFrame extends AbstractAkariFrame {
                 new Bounds(gameSettings.getX() * gameSettings.getFieldSize() * 2 / 3,
                         (gameSettings.getY()) * gameSettings.getFieldSize(),
                         gameSettings.getX() * gameSettings.getFieldSize() / 3, 50),
-                new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT),
+                new CommonEvent(EVENT_TYPE.NEXT_EVENT),
                 "NEXT");
     }
 
