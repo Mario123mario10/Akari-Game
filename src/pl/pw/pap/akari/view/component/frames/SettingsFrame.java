@@ -42,6 +42,9 @@ public class SettingsFrame extends AbstractAkariFrame {
         });
         addRow(difficultyLevelLabel, difficultyLevelComboBox);
 
+        var jTextArea = new JTextArea(10, 40);
+        addRow(jTextArea);
+        
         var backButton = new JButton("Back");
         backButton.setBackground(Color.white);
         backButton.addActionListener(e -> this.eventHandler.handleEvent(new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT)));

@@ -44,7 +44,7 @@ public class EventHandler {
 //			 tournamentService.getCurrentPlayerName().getName()
 			gameService.generateBoard(settingsService.getGameSettings());
 			framesManager.generateGameFrame(settingsService.getGameSettings(),
-					gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
+			gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
 
 			framesManager.setGameFrameVisible();
 			break;
