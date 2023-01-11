@@ -8,6 +8,7 @@ import pl.pw.pap.akari.view.component.frames.GameFrame;
 import pl.pw.pap.akari.view.component.frames.LeaderboardFrame;
 import pl.pw.pap.akari.view.component.frames.MenuFrame;
 import pl.pw.pap.akari.view.component.frames.SettingsFrame;
+import pl.pw.pap.akari.view.component.frames.TournamentFrame;
 
 import javax.swing.*;
 import java.util.List;
@@ -20,6 +21,7 @@ public class FramesManager {
 	private SettingsFrame settingsFrame;
 	private LeaderboardFrame leaderboardFrame;
 	private EventHandler eventHandler;
+	private TournamentFrame tournamentFrame;
 
 	public FramesManager(EventHandler eventHandler) {
 		this.eventHandler = eventHandler;
@@ -77,10 +79,20 @@ public class FramesManager {
 	public void generateSettingsFrame(GameSettings gameSettings) {
 		this.settingsFrame = new SettingsFrame(eventHandler, gameSettings);
 	}
+	
+	public void generateTournamentFrame() {
+		this.tournamentFrame = new TournamentFrame(eventHandler);
+	}
 
 	public void setSettingsFrameVisible() {
 		settingsFrame.setBounds(currentFrame.getBounds());
 		currentFrame = settingsFrame;
+		currentFrame.setVisible(true);
+	}
+	
+	public void setTournamentFrameVisible() {
+		tournamentFrame.setBounds(currentFrame.getBounds());
+		currentFrame = tournamentFrame;
 		currentFrame.setVisible(true);
 	}
 

@@ -1,11 +1,13 @@
 package pl.pw.pap.akari.handler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import pl.pw.pap.akari.model.component.event.BoardButtonEvent;
 import pl.pw.pap.akari.model.component.event.CommonEvent;
 import pl.pw.pap.akari.model.component.event.SettingsUpdateEvent;
+import pl.pw.pap.akari.model.component.event.TournamentUpdateEvent;
 import pl.pw.pap.akari.model.game.settings.GameSettings;
 import pl.pw.pap.akari.service.BoardSaver;
 import pl.pw.pap.akari.service.GameService;
@@ -20,12 +22,13 @@ public class EventHandler {
 	private SettingsService settingsService;
 	private BoardSaver boardSaver;
 	private TournamentService tournamentService;
+	private List<String> nameList;
 
 	public EventHandler() {
 		this.gameService = new GameService();
 		this.settingsService = new SettingsService();
 		this.boardSaver = new BoardSaver();
-
+		this.nameList = new ArrayList<String> ();
 //		List<String> nameList = Arrays.asList(new String[] { "a", "b", "c", "d" });
 //		this.tournamentService = new TournamentService(nameList);
 
@@ -34,8 +37,25 @@ public class EventHandler {
 	public void handleEvent(CommonEvent event) {
 		switch (event.getEventType()) {
 		case NEW_GAME_EVENT:
+			nameList = Arrays.asList(new String[] {});
+//			resetNameList();
+//			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
+			this.tournamentService = new TournamentService(nameList);
 			
-			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
+			framesManager.setCurrentFrameInvisible();
+			framesManager.setResumeButtonVisible();
+
+//			 tournamentService.getCurrentPlayerName().getName()
+			gameService.generateBoard(settingsService.getGameSettings());
+			framesManager.generateGameFrame(settingsService.getGameSettings(),
+			gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
+
+			framesManager.setGameFrameVisible();
+			break;
+			
+		case TOURNAMENT_GAME_EVENT:
+			
+//			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
 			this.tournamentService = new TournamentService(nameList);
 			
 			framesManager.setCurrentFrameInvisible();
@@ -88,6 +108,11 @@ public class EventHandler {
 			framesManager.generateSettingsFrame(settingsService.getGameSettings());
 			framesManager.setSettingsFrameVisible();
 			break;
+		case TOURNAMENT_EVENT:
+			framesManager.setCurrentFrameInvisible();
+			framesManager.generateTournamentFrame();
+			framesManager.setTournamentFrameVisible();
+			break;
 		case QUIT_EVENT:
 			System.exit(0);
 		case RESUME_EVENT:
@@ -127,6 +152,12 @@ public class EventHandler {
 		settingsService.setGameSettings(gameSettings);
 		framesManager.refreshSettingsFrame(settingsService.getGameSettings());
 	}
+	
+	public void handleEvent(TournamentUpdateEvent event) {
+		this.nameList = Arrays.asList(event.getList());
+		
+		
+	}
 
 	public void setFramesManager(FramesManager framesManager) {
 		this.framesManager = framesManager;
@@ -135,5 +166,10 @@ public class EventHandler {
 	public TournamentService getTournamentService()
 	{
 		return tournamentService;
+	}
+
+	public void resetNameList() {
+		nameList.clear();
+		
 	}
 }

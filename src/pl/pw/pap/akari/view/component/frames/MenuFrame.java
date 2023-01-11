@@ -24,6 +24,7 @@ public class MenuFrame extends AbstractAkariFrame {
         addButton(generateSettingsButton());
         addButton(generateQuitButton());
         addButton(generateResumeButton());
+        addButton(generateTournamentButton());
     }
 
     @Override
@@ -49,7 +50,7 @@ public class MenuFrame extends AbstractAkariFrame {
                 = new MenuButtonAttributes(
                 new Bounds(200, 380, 200, 60),
                 RESOURCES.NEW_GAME_BUTTON_BACKGROUND_PATH);
-
+//        eventHandler.resetNameList();
         return new MenuButton(eventHandler, menuButtonAttributes,
                 new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT));
     }
@@ -98,5 +99,15 @@ public class MenuFrame extends AbstractAkariFrame {
         this.resumeButton = resumeButton;
 
         return resumeButton;
+    }
+    
+    private MenuButton generateTournamentButton() {
+        MenuButtonAttributes menuButtonAttributes
+                = new MenuButtonAttributes(
+                new Bounds(200, 660, 200, 60),
+                RESOURCES.TOURNAMENT_BUTTON_BACKGROUND_PATH);
+
+        return new MenuButton(eventHandler, menuButtonAttributes,
+                new CommonEvent(EVENT_TYPE.TOURNAMENT_EVENT));
     }
 }
