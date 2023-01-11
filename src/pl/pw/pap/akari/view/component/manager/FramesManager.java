@@ -47,10 +47,15 @@ public class FramesManager {
 		menuFrame.setVisible(true);
 	}
 
+	
 	// GAME FRAME
 	public void generateGameFrame(GameSettings gameSettings, List<BoardButtonAttributes> attributes) {
-		this.currentGameFrame = new GameFrame(eventHandler, gameSettings, attributes);
+		this.currentGameFrame = new GameFrame(eventHandler, gameSettings, attributes, eventHandler.getTournamentService());
 	}
+	
+//	public void generateTournamentFrame(GameSettings gameSettings, List<BoardButtonAttributes> attributes) {
+//		this.currentGameFrame = new GameFrame(eventHandler, gameSettings, attributes, true);
+//	}
 
 	public void setGameFrameVisible() {
 		currentFrame = currentGameFrame;

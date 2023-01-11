@@ -35,7 +35,7 @@ public class EventHandler {
 		switch (event.getEventType()) {
 		case NEW_GAME_EVENT:
 			
-			List<String> nameList = Arrays.asList(new String[] { "a", "b", "c", "d" });
+			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
 			this.tournamentService = new TournamentService(nameList);
 			
 			framesManager.setCurrentFrameInvisible();
@@ -130,5 +130,10 @@ public class EventHandler {
 
 	public void setFramesManager(FramesManager framesManager) {
 		this.framesManager = framesManager;
+	}
+	
+	public TournamentService getTournamentService()
+	{
+		return tournamentService;
 	}
 }
