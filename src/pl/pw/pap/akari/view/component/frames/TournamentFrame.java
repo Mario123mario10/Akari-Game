@@ -23,7 +23,9 @@ public class TournamentFrame extends AbstractAkariFrame {
         this.setContentPane(background);
         this.getContentPane().setLayout(new GridBagLayout());
 
-
+        var nameDescription = new JLabel ("Enter players names", SwingConstants.CENTER);
+        addRow(nameDescription);
+        
         nameList = new JTextArea(10, 40);
         addRow(nameList);
         

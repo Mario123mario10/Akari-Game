@@ -26,11 +26,27 @@ public class PlayerInfo {
 		this.time = time;
 	}
 	
-	public String scoreText()
+//	public String scoreText()
+//	{
+//		return nickName + "                 " + time;
+//	}
+	
+	public String [] infoText()
 	{
-		return nickName + "                   " + time;
+		
+		String [] text = {this.nickName, this.timeText()};
+		return text;
 	}
 	
+	private String timeText()
+	{
+		int seconds = this.time / 10;
+		int deSeconds = this.time % 10;
+		
+		String all = (seconds + ":" + deSeconds + " SEC");
+
+		return all;
+	}
 	
     
     

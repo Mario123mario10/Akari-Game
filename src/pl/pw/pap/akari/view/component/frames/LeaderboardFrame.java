@@ -14,7 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 import pl.pw.pap.akari.handler.EventHandler;
 import pl.pw.pap.akari.model.component.event.CommonEvent;
@@ -31,46 +33,21 @@ public class LeaderboardFrame extends AbstractAkariFrame {
         this.setContentPane(background);
         this.getContentPane().setLayout(new GridBagLayout());
 
-//        var widthLabel = new JLabel("Width", SwingConstants.CENTER);
-//        widthSlider = makeSlider(gameSettings.getMinWidth(), gameSettings.getMaxWidth(), gameSettings.getX());
-//        addRow(widthLabel, widthSlider);
-//
-//        var heightLabel = new JLabel("Height", SwingConstants.CENTER);
-//        heightSlider = makeSlider(gameSettings.getMinHeight(), gameSettings.getMaxHeight(), gameSettings.getY());
-//        addRow(heightLabel, heightSlider);
+        Object [][] scores = tournamentInfo.getScores();
+        
+        String [] columnNames = {"ranking", "name", "time"};
+        
+        DefaultTableModel scoreModel = new DefaultTableModel(scores, columnNames);
+        JTable scoreTable = new JTable(scoreModel);
+        
+        scoreTable.setFont(new Font("Arial", Font.BOLD, 15));
+        JScrollPane scrollPane = new JScrollPane(scoreTable);
 
-//        var difficultyLevelLabel = new JLabel("Difficulty", SwingConstants.CENTER);
-//        difficultyLevelComboBox = new JComboBox<>(DIFFICULTY_LEVEL.values());
-//        difficultyLevelComboBox.setSelectedItem(gameSettings.getDifficultyLevel());
-//        difficultyLevelComboBox.addItemListener(e -> {
-//            if (e.getStateChange() == ItemEvent.SELECTED) {
-//                eventHandler.handleEvent(createUpdateEvent());
-//            }
-//        });
-//        addRow(difficultyLevelLabel, difficultyLevelComboBox);
-
-        JList<String> scoreList = new JList<>(tournamentInfo.getScores());
-        
-        
-
-        //scoreList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        scoreList.setLayoutOrientation(JList.VERTICAL);
-//        scoreList.setVisibleRowCount(-1);
-        
-        scoreList.setOpaque(false); // przejrzyste
-        scoreList.setAlignmentX(CENTER_ALIGNMENT);
-        scoreList.setFont(new Font("Arial", Font.BOLD, 20));
-        
-        JScrollPane scrollPane = new JScrollPane(scoreList);
-        
-        DefaultListCellRenderer renderer = (DefaultListCellRenderer) scoreList.getCellRenderer();
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
         
         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
-//        scrollPane.setBackground(new Color(0,0,0,0));
         addRow(scrollPane);
-//        addRow(scoreList);
+
         
         
         var backButton = new JButton("Back");
