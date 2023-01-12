@@ -22,26 +22,11 @@ public class TournamentInfo {
         return players;
     }
     
-//    public String[] getScores()
-//    {
-//    	this.sort();
-//    	
-//    	String [] scores = new String[players.size() + 1];
-//    	scores[0] = "ranking    player's names   consumed time [s]";
-//    	
-//    	for (int i = 0; i< players.size(); i++)
-//    	{
-//    		scores[i+1] = Integer.toString(i+1) + "               " + players.get(i).scoreText();
-//    	}
-//    	return scores;
-//    }
-    
     public Object [][] getScores()
     {
     	this.sort();
     	
     	Object [][] scores = new Object[players.size()][];
-//    	scores[0] = "ranking    player's names   consumed time [s]";
     	
     	for (int i = 0; i< players.size(); i++)
     	{

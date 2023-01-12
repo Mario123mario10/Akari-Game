@@ -16,7 +16,6 @@ public class SettingsFrame extends AbstractAkariFrame {
     private final JSlider widthSlider;
     private final JSlider heightSlider;
     private final JComboBox<DIFFICULTY_LEVEL> difficultyLevelComboBox;
-//    private final JTextArea nameList;
 
     public SettingsFrame(EventHandler eventHandler, GameSettings gameSettings) {
         super(eventHandler, null);
@@ -43,8 +42,6 @@ public class SettingsFrame extends AbstractAkariFrame {
         });
         addRow(difficultyLevelLabel, difficultyLevelComboBox);
 
-//        nameList = new JTextArea(10, 40);
-//        addRow(nameList);
         
         var backButton = new JButton("Back");
         backButton.setBackground(Color.white);
@@ -121,7 +118,6 @@ public class SettingsFrame extends AbstractAkariFrame {
     }
 
     private SettingsUpdateEvent createUpdateEvent() {
-//        return new SettingsUpdateEvent(widthSlider.getValue(), heightSlider.getValue(), (DIFFICULTY_LEVEL) difficultyLevelComboBox.getSelectedItem(), nameList.getText().split("\n"));
         return new SettingsUpdateEvent(widthSlider.getValue(), heightSlider.getValue(), (DIFFICULTY_LEVEL) difficultyLevelComboBox.getSelectedItem());
 
     }

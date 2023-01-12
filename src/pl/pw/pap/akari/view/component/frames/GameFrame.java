@@ -162,7 +162,6 @@ public class GameFrame extends AbstractAkariFrame {
                         (gameSettings.getY()) * gameSettings.getFieldSize(),
                         gameSettings.getX() * gameSettings.getFieldSize() / 3, 50),
                 		buttonEvent,
-//                new CommonEvent(EVENT_TYPE.NEXT_EVENT),
                 "NEXT");
     }
 

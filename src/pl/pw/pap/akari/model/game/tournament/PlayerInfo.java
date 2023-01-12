@@ -3,7 +3,7 @@ package pl.pw.pap.akari.model.game.tournament;
 public class PlayerInfo {
     
 	private String nickName;
-    private int time; // w milisekundach
+    private int time;
     
 	public PlayerInfo(String name) 
 	{
@@ -25,11 +25,6 @@ public class PlayerInfo {
 	{
 		this.time = time;
 	}
-	
-//	public String scoreText()
-//	{
-//		return nickName + "                 " + time;
-//	}
 	
 	public String [] infoText()
 	{

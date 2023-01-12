@@ -50,7 +50,6 @@ public class MenuFrame extends AbstractAkariFrame {
                 = new MenuButtonAttributes(
                 new Bounds(200, 380, 200, 60),
                 RESOURCES.NEW_GAME_BUTTON_BACKGROUND_PATH);
-//        eventHandler.resetNameList();
         return new MenuButton(eventHandler, menuButtonAttributes,
                 new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT));
     }

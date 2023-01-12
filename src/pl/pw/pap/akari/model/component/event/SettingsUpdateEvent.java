@@ -6,13 +6,11 @@ public class SettingsUpdateEvent {
     private final int width;
     private final int height;
     private final DIFFICULTY_LEVEL difficultyLevel;
-//    private final String [] nameList;
 
     public SettingsUpdateEvent(int width, int height, DIFFICULTY_LEVEL difficultyLevel) {
         this.width = width;
         this.height = height;
         this.difficultyLevel = difficultyLevel;
-//        this.nameList = nameList;
     }
 
     public int getWidth() {
@@ -27,8 +25,4 @@ public class SettingsUpdateEvent {
         return difficultyLevel;
     }
     
-//    public String [] getList()
-//    {
-//    	return nameList;
-//    }
 }

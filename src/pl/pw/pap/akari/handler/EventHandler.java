@@ -29,8 +29,6 @@ public class EventHandler {
 		this.settingsService = new SettingsService();
 		this.boardSaver = new BoardSaver();
 		this.nameList = new ArrayList<String> ();
-//		List<String> nameList = Arrays.asList(new String[] { "a", "b", "c", "d" });
-//		this.tournamentService = new TournamentService(nameList);
 
 	}
 
@@ -38,14 +36,11 @@ public class EventHandler {
 		switch (event.getEventType()) {
 		case NEW_GAME_EVENT:
 			nameList = Arrays.asList(new String[] {});
-//			resetNameList();
-//			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
 			this.tournamentService = new TournamentService(nameList);
 			
 			framesManager.setCurrentFrameInvisible();
 			framesManager.setResumeButtonVisible();
 
-//			 tournamentService.getCurrentPlayerName().getName()
 			gameService.generateBoard(settingsService.getGameSettings());
 			framesManager.generateGameFrame(settingsService.getGameSettings(),
 			gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
@@ -55,13 +50,11 @@ public class EventHandler {
 			
 		case TOURNAMENT_GAME_EVENT:
 			
-//			List<String> nameList = Arrays.asList(new String[] {"a", "b", "c"});
 			this.tournamentService = new TournamentService(nameList);
 			
 			framesManager.setCurrentFrameInvisible();
 			framesManager.setResumeButtonVisible();
 
-//			 tournamentService.getCurrentPlayerName().getName()
 			gameService.generateBoard(settingsService.getGameSettings());
 			framesManager.generateGameFrame(settingsService.getGameSettings(),
 			gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
