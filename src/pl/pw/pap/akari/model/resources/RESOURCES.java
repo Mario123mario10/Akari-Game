@@ -9,7 +9,7 @@ public enum RESOURCES {
     QUIT_BUTTON_BACKGROUND_PATH("src/resources/quit.jpg"),
     BULB_ICON_PATH("src/resources/bulb.jpg"),
     ERR_BULB_ICON_PATH("src/resources/bulb_err.jpg"),
-	TOURNAMENT_BUTTON_BACKGROUND_PATH("src/resources/new_game.jpg");
+	TOURNAMENT_BUTTON_BACKGROUND_PATH("src/resources/tournament.jpg");
 	
     private String value;
 
