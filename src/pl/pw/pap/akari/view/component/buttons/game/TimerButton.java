@@ -30,6 +30,10 @@ public class TimerButton extends JButton {
         timer.stop();
         this.setBackground(Color.GREEN);
     }
+    
+    public int getTime() {
+    	return time;
+    }
 
     private void setText(int time) {
         this.setText("<html><center> <small>" +  prepareTime() + " SEC</center></small><br>" + "CHECK" + "</html>");
@@ -58,5 +62,7 @@ public class TimerButton extends JButton {
         timer.start();
         return timer;
     }
+    
+    
 }
 

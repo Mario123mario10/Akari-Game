@@ -8,8 +8,9 @@ public enum RESOURCES {
     SETTINGS_BUTTON_BACKGROUND_PATH("src/resources/settings.jpg"),
     QUIT_BUTTON_BACKGROUND_PATH("src/resources/quit.jpg"),
     BULB_ICON_PATH("src/resources/bulb.jpg"),
-    ERR_BULB_ICON_PATH("src/resources/bulb_err.jpg");
-
+    ERR_BULB_ICON_PATH("src/resources/bulb_err.jpg"),
+	TOURNAMENT_BUTTON_BACKGROUND_PATH("src/resources/tournament.jpg");
+	
     private String value;
 
     RESOURCES(String value) {

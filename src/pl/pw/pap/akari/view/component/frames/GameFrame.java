@@ -7,7 +7,9 @@ import pl.pw.pap.akari.model.component.event.BoardButtonEvent;
 import pl.pw.pap.akari.model.component.event.CommonEvent;
 import pl.pw.pap.akari.model.component.event.EVENT_TYPE;
 import pl.pw.pap.akari.model.game.settings.GameSettings;
+import pl.pw.pap.akari.model.game.tournament.TournamentInfo;
 import pl.pw.pap.akari.model.resources.RESOURCES;
+import pl.pw.pap.akari.service.TournamentService;
 import pl.pw.pap.akari.view.component.buttons.game.NavigateButton;
 import pl.pw.pap.akari.view.component.buttons.game.BoardButton;
 import pl.pw.pap.akari.view.component.buttons.game.TimerButton;
@@ -21,9 +23,15 @@ public class GameFrame extends AbstractAkariFrame {
     private JButton buttons[][];
     private GameSettings cachedSettings;
     private TimerButton timerButton;
+    private boolean isTournament;
+    private TournamentService tournamentService;
 
-    public GameFrame(EventHandler eventHandler, GameSettings settings, List<BoardButtonAttributes> attributesList) {
+    public GameFrame(EventHandler eventHandler, GameSettings settings, List<BoardButtonAttributes> attributesList, TournamentService tournamentService) {
         super(eventHandler, settings);
+        
+        this.isTournament = tournamentService != null && tournamentService.getPlayers().size() > 0;
+        System.out.println(this.isTournament);
+        this.tournamentService = tournamentService;
         prepareFrame(attributesList);
     }
 
@@ -50,6 +58,10 @@ public class GameFrame extends AbstractAkariFrame {
     public void timerStop() {
         this.timerButton.stop();
     }
+    
+    public int getTime() {
+		return timerButton.getTime();
+	}
 
     public void refreshGameButtons(List<BoardButtonAttributes> attributesList) {
         for (BoardButtonAttributes attributes : attributesList) {
@@ -132,19 +144,24 @@ public class GameFrame extends AbstractAkariFrame {
                 (gameSettings.getY()) * gameSettings.getFieldSize(),
                 gameSettings.getX() * gameSettings.getFieldSize() / 3,
                 50),
-                new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT),
-                "BACK"
+                isTournament? null : new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT),
+                isTournament? tournamentService.getCurrentPlayerName().getName():"BACK"
         );
     }
 
     private NavigateButton generateNextButton() {
         GameSettings gameSettings = currentGameSettings();
+        
+        CommonEvent newGameEvent = new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT);
+        CommonEvent nextEvent = new CommonEvent(EVENT_TYPE.NEXT_EVENT);
+        
+        CommonEvent buttonEvent = isTournament ? nextEvent : newGameEvent; 
 
         return new NavigateButton(eventHandler,
                 new Bounds(gameSettings.getX() * gameSettings.getFieldSize() * 2 / 3,
                         (gameSettings.getY()) * gameSettings.getFieldSize(),
                         gameSettings.getX() * gameSettings.getFieldSize() / 3, 50),
-                new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT),
+                		buttonEvent,
                 "NEXT");
     }
 

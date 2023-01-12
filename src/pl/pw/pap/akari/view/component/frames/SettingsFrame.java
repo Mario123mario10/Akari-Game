@@ -42,6 +42,7 @@ public class SettingsFrame extends AbstractAkariFrame {
         });
         addRow(difficultyLevelLabel, difficultyLevelComboBox);
 
+        
         var backButton = new JButton("Back");
         backButton.setBackground(Color.white);
         backButton.addActionListener(e -> this.eventHandler.handleEvent(new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT)));
@@ -118,5 +119,8 @@ public class SettingsFrame extends AbstractAkariFrame {
 
     private SettingsUpdateEvent createUpdateEvent() {
         return new SettingsUpdateEvent(widthSlider.getValue(), heightSlider.getValue(), (DIFFICULTY_LEVEL) difficultyLevelComboBox.getSelectedItem());
+
     }
+    
+    
 }

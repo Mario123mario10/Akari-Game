@@ -24,4 +24,5 @@ public class SettingsUpdateEvent {
     public DIFFICULTY_LEVEL getDifficultyLevel() {
         return difficultyLevel;
     }
+    
 }
