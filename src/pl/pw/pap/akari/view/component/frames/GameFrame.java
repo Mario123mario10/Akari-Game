@@ -23,12 +23,13 @@ public class GameFrame extends AbstractAkariFrame {
     private JButton buttons[][];
     private GameSettings cachedSettings;
     private TimerButton timerButton;
+    private NavigateButton nextButton;
     private boolean isTournament;
     private TournamentService tournamentService;
 
     public GameFrame(EventHandler eventHandler, GameSettings settings, List<BoardButtonAttributes> attributesList, TournamentService tournamentService) {
         super(eventHandler, settings);
-        
+
         this.isTournament = tournamentService != null && tournamentService.getPlayers().size() > 0;
         System.out.println(this.isTournament);
         this.tournamentService = tournamentService;
@@ -58,10 +59,14 @@ public class GameFrame extends AbstractAkariFrame {
     public void timerStop() {
         this.timerButton.stop();
     }
-    
+
+    public void setNextButtonEnabled() {
+        this.nextButton.setEnabled(true);
+    }
+
     public int getTime() {
-		return timerButton.getTime();
-	}
+        return timerButton.getTime();
+    }
 
     public void refreshGameButtons(List<BoardButtonAttributes> attributesList) {
         for (BoardButtonAttributes attributes : attributesList) {
@@ -144,25 +149,30 @@ public class GameFrame extends AbstractAkariFrame {
                 (gameSettings.getY()) * gameSettings.getFieldSize(),
                 gameSettings.getX() * gameSettings.getFieldSize() / 3,
                 50),
-                isTournament? null : new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT),
-                isTournament? tournamentService.getCurrentPlayerName().getName():"BACK"
+                isTournament ? null : new CommonEvent(EVENT_TYPE.CHANGE_CONTEXT_TO_MENU_EVENT),
+                isTournament ? tournamentService.getCurrentPlayerName().getName() : "BACK"
         );
     }
 
     private NavigateButton generateNextButton() {
         GameSettings gameSettings = currentGameSettings();
-        
+
         CommonEvent newGameEvent = new CommonEvent(EVENT_TYPE.NEW_GAME_EVENT);
         CommonEvent nextEvent = new CommonEvent(EVENT_TYPE.NEXT_EVENT);
-        
-        CommonEvent buttonEvent = isTournament ? nextEvent : newGameEvent; 
 
-        return new NavigateButton(eventHandler,
+        CommonEvent buttonEvent = isTournament ? nextEvent : newGameEvent;
+
+        NavigateButton nextButton = new NavigateButton(eventHandler,
                 new Bounds(gameSettings.getX() * gameSettings.getFieldSize() * 2 / 3,
                         (gameSettings.getY()) * gameSettings.getFieldSize(),
                         gameSettings.getX() * gameSettings.getFieldSize() / 3, 50),
-                		buttonEvent,
+                buttonEvent,
                 "NEXT");
+        this.nextButton = nextButton;
+        if (isTournament) {
+            nextButton.setEnabled(false);
+        }
+        return nextButton;
     }
 
     private TimerButton generateTimerButton() {

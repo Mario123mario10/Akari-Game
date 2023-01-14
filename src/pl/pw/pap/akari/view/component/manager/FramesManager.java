@@ -71,7 +71,9 @@ public class FramesManager {
 	public void timerStop() {
 		currentGameFrame.timerStop();
 	}
-	
+	public void setNextButtonEnabled(){
+		currentGameFrame.setNextButtonEnabled();
+	}
 	public int getTime() {
 		return currentGameFrame.getTime();
 	}

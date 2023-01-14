@@ -134,6 +134,7 @@ public class EventHandler {
 		framesManager.refreshGameFrame(gameService.getCurrentGameButtonAttributes(fieldSize));
 		if (gameService.isDoneBoard()) {
 			framesManager.timerStop();
+			framesManager.setNextButtonEnabled();
 		}
 	}
 
