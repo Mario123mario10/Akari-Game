@@ -31,7 +31,6 @@ public class GameFrame extends AbstractAkariFrame {
         super(eventHandler, settings);
 
         this.isTournament = tournamentService != null && tournamentService.getPlayers().size() > 0;
-        System.out.println(this.isTournament);
         this.tournamentService = tournamentService;
         prepareFrame(attributesList);
     }

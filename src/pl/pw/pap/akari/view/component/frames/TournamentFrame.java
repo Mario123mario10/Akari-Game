@@ -28,7 +28,6 @@ import pl.pw.pap.akari.model.component.event.TournamentUpdateEvent;
 import pl.pw.pap.akari.model.resources.RESOURCES;
 
 public class TournamentFrame extends AbstractAkariFrame {
-	// private final JTextArea nameList;
 
 	private final DefaultListModel<String> listModel;
 
@@ -38,7 +37,6 @@ public class TournamentFrame extends AbstractAkariFrame {
 		JLabel background = new JLabel(new ImageIcon(getBackgroundPath().getValue()));
 		this.setContentPane(background);
 		this.getContentPane().setLayout(new GridBagLayout());
-		// this.getContentPane().setLayout(new CardLayout());
 
 		var nameDescription = new JLabel("List of players", SwingConstants.LEFT);
 		addRow(nameDescription);
@@ -46,7 +44,6 @@ public class TournamentFrame extends AbstractAkariFrame {
 		listModel = new DefaultListModel<String>();
 
 		var list = new JList(listModel); // data has type Object[]
-		// list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(3);
 		list.setSize(new Dimension(40, 40));
@@ -55,7 +52,6 @@ public class TournamentFrame extends AbstractAkariFrame {
 		JScrollPane listScroller = new JScrollPane(list);
 		listScroller.setPreferredSize(new Dimension(40, 40));
 		listScroller.setMinimumSize(new Dimension(40, 140));
-		// addRow(listScroller);
 
 		var playButton = new JButton("Play");
 		var deleteButton = new JButton("Remove player");
@@ -96,7 +92,6 @@ public class TournamentFrame extends AbstractAkariFrame {
 				} else {
 					addButton.setEnabled(true);
 				}
-				// System.out.println("Text=" + textField.getText());
 			}
 		});
 

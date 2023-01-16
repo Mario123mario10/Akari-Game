@@ -64,7 +64,6 @@ public class EventHandler {
 		case NEXT_EVENT:
 			if (tournamentService.isLastPlayer())
 			{
-				System.out.println("skończył grać ostatni gracz");
 				tournamentService.incrementIndex(framesManager.getTime());
 				framesManager.setCurrentFrameInvisible();
 				framesManager.generateLeaderboardFrame(tournamentService.getTournamentInfo());
