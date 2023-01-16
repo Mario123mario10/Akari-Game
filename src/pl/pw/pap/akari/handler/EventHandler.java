@@ -50,6 +50,7 @@ public class EventHandler {
 			
 		case TOURNAMENT_GAME_EVENT:
 			
+			
 			this.tournamentService = new TournamentService(nameList);
 			
 			framesManager.setCurrentFrameInvisible();

@@ -63,12 +63,23 @@ public class MenuFrame extends AbstractAkariFrame {
         return new MenuButton(eventHandler, menuButtonAttributes,
                 new CommonEvent(EVENT_TYPE.LOAD_GAME_EVENT));
     }
+    
+    private MenuButton generateTournamentButton() {
+        MenuButtonAttributes menuButtonAttributes
+                = new MenuButtonAttributes(
+                new Bounds(200, 520, 200, 60),
+                RESOURCES.TOURNAMENT_BUTTON_BACKGROUND_PATH);
 
+        return new MenuButton(eventHandler, menuButtonAttributes,
+                new CommonEvent(EVENT_TYPE.TOURNAMENT_EVENT));
+    }
+    
+    
     private MenuButton generateSettingsButton() {
 
         MenuButtonAttributes menuButtonAttributes
                 = new MenuButtonAttributes(
-                new Bounds(200, 520, 200, 60),
+                new Bounds(200, 590, 200, 60),
                 RESOURCES.SETTINGS_BUTTON_BACKGROUND_PATH);
 
         return new MenuButton(eventHandler, menuButtonAttributes,
@@ -78,7 +89,7 @@ public class MenuFrame extends AbstractAkariFrame {
     private MenuButton generateQuitButton() {
         MenuButtonAttributes menuButtonAttributes
                 = new MenuButtonAttributes(
-                new Bounds(200, 590, 200, 60),
+                new Bounds(200, 660, 200, 60),
                 RESOURCES.QUIT_BUTTON_BACKGROUND_PATH);
 
         return new MenuButton(eventHandler, menuButtonAttributes,
@@ -100,13 +111,5 @@ public class MenuFrame extends AbstractAkariFrame {
         return resumeButton;
     }
     
-    private MenuButton generateTournamentButton() {
-        MenuButtonAttributes menuButtonAttributes
-                = new MenuButtonAttributes(
-                new Bounds(200, 660, 200, 60),
-                RESOURCES.TOURNAMENT_BUTTON_BACKGROUND_PATH);
-
-        return new MenuButton(eventHandler, menuButtonAttributes,
-                new CommonEvent(EVENT_TYPE.TOURNAMENT_EVENT));
-    }
+    
 }
