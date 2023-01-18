@@ -23,6 +23,7 @@ public class EventHandler {
 	private BoardSaver boardSaver;
 	private TournamentService tournamentService;
 	private List<String> nameList;
+	private boolean generateNewBoard;
 
 	public EventHandler() {
 		this.gameService = new GameService();
@@ -78,7 +79,11 @@ public class EventHandler {
 			framesManager.setCurrentFrameInvisible();
 			framesManager.setResumeButtonVisible();
 
-			gameService.generateBoard(settingsService.getGameSettings());
+			if (generateNewBoard)
+				gameService.generateBoard(settingsService.getGameSettings());
+			else
+				gameService.clearBoard();
+			
 			framesManager.generateGameFrame(settingsService.getGameSettings(),
 			gameService.getCurrentGameButtonAttributes(settingsService.getGameSettings().getFieldSize()));
 
@@ -149,6 +154,7 @@ public class EventHandler {
 	
 	public void handleEvent(TournamentUpdateEvent event) {
 		this.nameList = Arrays.asList(event.getList());
+		this.generateNewBoard = event.getGenerateNewBoard();
 		
 		
 	}
