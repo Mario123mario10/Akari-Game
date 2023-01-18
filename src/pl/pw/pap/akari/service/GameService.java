@@ -81,6 +81,11 @@ public class GameService {
         wallInfoUpdate();
         clearMapAfterGeneration();
     }
+    
+    public void clearBoard()
+    {
+    	clearMapAfterGeneration();
+    }
 
     public GameSettings loadGame() {
         JFileChooser fileChooser = new JFileChooser("/maps");

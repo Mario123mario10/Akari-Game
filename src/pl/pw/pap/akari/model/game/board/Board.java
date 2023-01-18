@@ -13,6 +13,15 @@ public class Board {
             }
         }
     }
+    
+    public void clear (int x, int y) {
+        this.fields = new Field[x][y];
+        for (int _x = 0; _x < x; _x++) {
+            for (int _y = 0; _y < y; _y++) {
+                fields[_x][_y] = new Field(_x, _y);
+            }
+        }
+    }
 
     public Field[][] getFields() {
         return fields;

@@ -11,6 +11,7 @@ import java.awt.Insets;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -30,6 +31,7 @@ import pl.pw.pap.akari.model.resources.RESOURCES;
 public class TournamentFrame extends AbstractAkariFrame {
 
 	private final DefaultListModel<String> listModel;
+	private JCheckBox checkBox;
 
 	public TournamentFrame(EventHandler eventHandler) {
 		super(eventHandler, null);
@@ -37,6 +39,8 @@ public class TournamentFrame extends AbstractAkariFrame {
 		JLabel background = new JLabel(new ImageIcon(getBackgroundPath().getValue()));
 		this.setContentPane(background);
 		this.getContentPane().setLayout(new GridBagLayout());
+//		JLabel checkBoxText = new JLabel();
+		checkBox = new JCheckBox("Generate new board for each player?");
 
 		var nameDescription = new JLabel("List of players", SwingConstants.LEFT);
 		addRow(nameDescription);
@@ -110,7 +114,9 @@ public class TournamentFrame extends AbstractAkariFrame {
 			eventHandler.handleEvent(createUpdateEvent());
 			this.eventHandler.handleEvent(new CommonEvent(EVENT_TYPE.TOURNAMENT_GAME_EVENT));
 		});
-
+		
+		addRow(checkBox);
+		
 		addRow(playButton);
 
 		Font font = new Font("sans", Font.BOLD, 22);
@@ -159,7 +165,7 @@ public class TournamentFrame extends AbstractAkariFrame {
 		var size = listModel.size();
 		String[] array = new String[size];
 		listModel.copyInto(array);
-		return new TournamentUpdateEvent(array);
+		return new TournamentUpdateEvent(array, checkBox.isSelected());
 	}
 
 }
